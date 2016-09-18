@@ -1,5 +1,5 @@
-local datalog = require "datalog"
-local WHAT = (require "ast").WHAT
+local datalog = require "datalog.datalog"
+local WHAT = (require "datalog.ast").WHAT
 
 local function is_variable(s)
     return string.match(s, "[A-Z]")

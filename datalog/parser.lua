@@ -1,5 +1,5 @@
 local lpeg = require "lpeg"
-local WHAT = (require "ast").WHAT
+local WHAT = (require "datalog.ast").WHAT
 
 local NONPRINTABLE = lpeg.R("\x00\x31")
 local SPACE = lpeg.S(" \t\r\n")

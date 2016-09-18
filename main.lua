@@ -1,7 +1,7 @@
+#!/usr/bin/env lua
+
 local fmt = string.format
-local parser = require "parser"
-local pretty = require "pretty"
-local interpreter = require "interpreter"
+local datalog = require "datalog"
 
 local die = function(s)
     io.stderr:write(s .. "\n")
@@ -25,6 +25,6 @@ if not arg[1] then usage(arg) end
 local program, err = read_file(arg[1])
 if err then die(err) end
 
-local ast = parser.parse(program)
-local r = interpreter.process(ast)
-if r then print(pretty.dump(r)) end
+local ast = datalog.parser.parse(program)
+local r = datalog.interpreter.process(ast)
+if r then print(datalog.pretty.dump(r)) end

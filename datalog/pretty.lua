@@ -1,5 +1,5 @@
 local fmt = string.format
-local WHAT = (require "ast").WHAT
+local WHAT = (require "datalog.ast").WHAT
 
 local D = {}
 
