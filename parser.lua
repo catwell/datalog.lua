@@ -37,7 +37,7 @@ local function program(p)
     return p / function(...)
         local statements = {...}
         local query = nil
-        local last_statement = statements[#statements - 1]
+        local last_statement = statements[#statements]
         if last_statement and last_statement.what == WHAT.QUERY then
             query = last_statement
             table.remove(statements)
