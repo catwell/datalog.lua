@@ -216,7 +216,7 @@ local function get_tag(literal)
     return tag
 end
 
-function Const:get_tag(i, env)
+function Const:get_tag(_, env)
     return "c" .. self.id
 end
 
@@ -330,7 +330,7 @@ function Const:unify(term, env)
     return term:unify_const(self, env)
 end
 
-function Const:unify_const(const, env)
+function Const:unify_const(_, env)
     return nil
 end
 
@@ -451,7 +451,7 @@ local function is_safe(clause)
     return true
 end
 
-function Const:is_safe(clause)
+function Const:is_safe(_)
     return true
 end
 
@@ -629,8 +629,8 @@ function rule(subgoal, clause, selected)
     if sg then
         table.insert(sg.waiters, {subgoal = subgoal, clause = clause})
         local todo = {}
-        for id,fact in pairs(sg.facts) do
-            local resolvent = resolve(clause, fact)
+        for _,fct in pairs(sg.facts) do
+            local resolvent = resolve(clause, fct)
             if resolvent then
                 table.insert(todo, resolvent)
             end
@@ -661,7 +661,7 @@ function search(subgoal)
     if literal.pred.prim then
         return literal.pred.prim(literal, subgoal)
     else
-        for id,clause in pairs(literal.pred.db) do
+        for _,clause in pairs(literal.pred.db) do
             local renamed = rename_clause(clause)
             local env = unify(literal, renamed.head)
             if env then
@@ -683,10 +683,10 @@ local function ask(literal)
     search(subgoal)
     subgoals = nil
     local answers = {}
-    for id,literal in pairs(subgoal.facts) do
+    for _,lit in pairs(subgoal.facts) do
         local answer = {}
-        for i=1,#literal do -- Each term in an answer will be
-            table.insert(answer, literal[i].id) -- a constant.
+        for i=1,#lit do -- Each term in an answer will be
+            table.insert(answer, lit[i].id) -- a constant.
         end
         table.insert(answers, answer)
     end
@@ -744,7 +744,7 @@ do -- equals primitive
         return x:equals_primitive(y, subgoal)
     end
 
-    function Var:equals_primitive(term, subgoal)
+    function Var:equals_primitive(_, _)
     end
 
     function Const:equals_primitive(term, subgoal)
@@ -760,11 +760,11 @@ end
 -- Does a literal unify with an fact known to contain only constant
 -- terms?
 
-local function match(literal, fact)
+local function match(literal, fct)
     local env = {}
     for i=1,#literal do
-        if literal[i] ~= fact[i] then
-            env = literal[i]:match(fact[i], env)
+        if literal[i] ~= fct[i] then
+            env = literal[i]:match(fct[i], env)
             if not env then
                 return env
             end
@@ -773,7 +773,7 @@ local function match(literal, fact)
     return env
 end
 
-function Const:match(const, env)
+function Const:match(_, _)
     return nil
 end
 
