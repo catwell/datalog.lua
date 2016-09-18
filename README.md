@@ -20,6 +20,8 @@ This is currently only tested with Lua 5.3 compiled with backwards
 compatibility for 5.1 and 5.2 and LPEG 0.12. It probably works fine with
 other Luas though.
 
+Tests depend on [cwtest](https://github.com/catwell/cwtest).
+
 ## Copyright
 
 - `datalog.lua` is Copyright (C) 2004 The MITRE Corporation.
