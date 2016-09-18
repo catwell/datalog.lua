@@ -1,5 +1,7 @@
 # datalog.lua
 
+[![Build Status](https://travis-ci.org/catwell/datalog.lua.png?branch=master)](https://travis-ci.org/catwell/datalog.lua)
+
 ## Presentation
 
 This is a pure Lua (+ LPEG) implementation of Datalog.
