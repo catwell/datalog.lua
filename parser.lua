@@ -1,7 +1,3 @@
--- TODO:
--- - comments
--- - all escape characters in string
-
 local lpeg = require "lpeg"
 local WHAT = (require "ast").WHAT
 
