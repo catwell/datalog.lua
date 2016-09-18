@@ -25,10 +25,6 @@ USA
 
 ]]
 
--- This file exports its contents for Lua users in package datalog.
--- The package is created at the end of the file.  All definitions
--- before the exports should be local definitions.
-
 -- DATA TYPES
 
 -- Internalize objects based on an identifier.
@@ -866,81 +862,9 @@ datalog.add_iter_prim("succ", 2, succ)
 
 --]]
 
--- EXPORTED FUNCTIONS
-
--- The C API
-
-function dl_pushliteral()
-    return {}
-end
-
-function dl_addpred(tbl, str)
-    tbl.name = str;
-    return tbl
-end
-
-function dl_addvar(tbl, str)
-    table.insert(tbl, make_var(str))
-    return tbl
-end
-
-function dl_addconst(tbl, str)
-    table.insert(tbl, make_const(str))
-    return tbl
-end
-
-function dl_makeliteral(tbl)
-    tbl.pred = make_pred(tbl.name, #tbl)
-    tbl.name = nil
-    return tbl
-end
-
-function dl_pushhead(literal)
-    return {head = literal}
-end
-
-function dl_addliteral(tbl, literal)
-    table.insert(tbl, literal)
-    return tbl
-end
-
-function dl_makeclause(tbl)
-    return tbl
-end
-
-dl_assert = assert
-
-dl_retract = retract
-
--- This C API function is more complicated than the others because it
--- is computing the total size of the character array that will be
--- allocated by the C routine using this function.  The character
--- array must have room for the predicate and all of the constant
--- terms in the answer.  Each item also needs room for the zero
--- character used to terminate each string.
-
-function dl_ask(literal)
-    local answers = ask(literal)
-    if not answers then
-        return answers
-    end
-    local n = #answers
-    local arity = answers.arity
-    local size = string.len(answers.name) + 1
-    for i=1,n do
-        local answer = answers[i]
-        for j=1,arity do
-            size = size + string.len(answer[j]) + 1
-        end
-    end
-    answers.size = size
-    answers.n = n -- Hack to hand back the size
-    return answers
-end
-
 -- The Lua API
 
-datalog = {
+return {
     make_var = make_var,
     make_const = make_const,
     make_pred = make_pred,
@@ -959,5 +883,3 @@ datalog = {
     ask = ask,
     add_iter_prim = add_iter_prim,
 }
-
-return datalog
