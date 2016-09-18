@@ -4,7 +4,7 @@
 
 This is a pure Lua (+ LPEG) implementation of Datalog.
 
-The core interpreter (`datalog.lua`) is a modified version of
+The core interpreter (`datalog/datalog.lua`) is a modified version of
 [John D. Ramsdell's Datalog](http://datalog.sourceforge.net/) from the
 MITRE corporation.
 
@@ -24,5 +24,7 @@ Tests depend on [cwtest](https://github.com/catwell/cwtest).
 
 ## Copyright
 
-- `datalog.lua` is Copyright (C) 2004 The MITRE Corporation.
-- All other files are Copyright (c) 2016 Pierre Chapuis.
+- `datalog/datalog.lua` is Copyright (C) 2004 The MITRE Corporation
+  and released under the GNU LGPL.
+- All other files are Copyright (c) 2016 Pierre Chapuis and released
+  under the MIT license, see LICENSE.txt.

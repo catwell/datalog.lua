@@ -21,7 +21,7 @@ dependencies = { "lua >= 5.1", "lpeg" }
 build = {
     type = "builtin",
     modules = {
-        ["datalog"] = "datalog/init.lua",
+        ["datalog"] = "datalog.lua",
         ["datalog.ast"] = "datalog/ast.lua",
         ["datalog.datalog"] = "datalog/datalog.lua",
         ["datalog.interpreter"] = "datalog/interpreter.lua",

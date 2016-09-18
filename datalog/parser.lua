@@ -1,7 +1,7 @@
 local lpeg = require "lpeg"
 local WHAT = (require "datalog.ast").WHAT
 
-local NONPRINTABLE = lpeg.R("\x00\x31")
+local NONPRINTABLE = lpeg.R(string.char(0x00, 0x31))
 local SPACE = lpeg.S(" \t\r\n")
 local TILDE = lpeg.S("~")
 local PERIOD = lpeg.S(".")
