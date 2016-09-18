@@ -19,6 +19,7 @@ before_install:
   - source .travis/setenv_lua.sh
 
 install:
+  - luarocks install penlight
   - luarocks install cwtest
   - luarocks install lpeg
 
