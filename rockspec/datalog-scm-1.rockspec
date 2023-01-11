@@ -1,3 +1,5 @@
+rockspec_format = "3.0"
+
 package = "datalog"
 version = "scm-1"
 
@@ -29,4 +31,11 @@ build = {
         ["datalog.pretty"] = "datalog/pretty.lua",
     },
    install = { bin = { ["datalog.lua"] = "main.lua" } },
+}
+
+test_dependencies = { "cwtest" }
+
+test = {
+   type = "command",
+   script = "datalog.test.lua",
 }
