@@ -22,4 +22,4 @@ Tests depend on [cwtest](https://github.com/catwell/cwtest).
 
 - `datalog/datalog.lua` is Copyright (C) 2004 The MITRE Corporation and released under the GNU LGPL.
 
-- All other files are Copyright (c) 2016-2022 Pierre Chapuis and released under the MIT license, see LICENSE.txt.
+- All other files are Copyright (c) 2016 Pierre Chapuis and released under the MIT license, see LICENSE.txt.
